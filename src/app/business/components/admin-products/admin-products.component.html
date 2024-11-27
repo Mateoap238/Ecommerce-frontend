@@ -1,0 +1,25 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">Administración de Productos</h1>
+  <button (click)="openModal()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">
+    Agregar Producto
+  </button>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div *ngFor="let product of products;" class="bg-white shadow-md rounded-lg p-4">
+      <h2 class="text-xl font-semibold">{{ product.name }}</h2>
+      <p class="text-gray-600">{{ product.description }}</p>
+      <p class="text-lg font-bold mt-2">{{ product.price | currency : 'COP' }}</p>
+      <div class="flex gap-2">
+        <button (click)="deleteProduct(product.id)"
+          class="mt-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+          Eliminar
+        </button>
+        <button (click)="openEditModal(product)"
+          class="mt-2 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded">
+          Editar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-product-modal #productModal [isOpen]="isModalOpen()" (closeModal)="closeModal()" (addProduct)="addProduct($event)"
+  (updateProduct)="updateProduct($event)"></app-product-modal>
