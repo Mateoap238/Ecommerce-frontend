@@ -1,32 +1,42 @@
 <header class="bg-white shadow-md">
-  <nav class="container mx-auto px-6 py-3 ">
+  <nav class="container mx-auto px-6 py-0 ">
     <div class="flex justify-between items-center">
-      <div class="text-xl font-bold text-gray-800">
-        <a routerLink="/">Mi Tienda</a>
+      <div class="text-xl font-bold text-gray-800 hidden sm:flex">
+        <img routerLink="/" src="/images/logoVape2.png" alt="logo vape"
+          class="w-full max-w-xs h-full max-h-16 cursor-pointer">
+        <!-- <a routerLink="/">VapeClouds</a> -->
       </div>
       <div class="flex space-x-4">
-        <a routerLink="/" routerLinkActive="" class="text-gray-800 hover:text-blue-600 cursor-pointer">Inicio</a>
-        <a routerLink="/products" class="text-gray-800 hover:text-blue-600 cursor-pointer">Productos</a>
-        <a routerLink="/offers" class="text-gray-800 hover:text-blue-600 cursor-pointer">Ofertas</a>
-        <!-- <a routerLink="/about-us" class="text-gray-800 hover:text-blue-600 cursor-pointer">Sobre nosotros</a> -->
-        <a class="text-gray-800 hover:text-blue-600 cursor-pointer"></a>
-        <a routerLink="/management" class="text-gray-800 hover:text-blue-600 cursor-pointer">Administrar productos</a>
+        <a routerLink="/" routerLinkActive=""
+          class="text-gray-800 text-lg hover:text-teal-600 cursor-pointer hover:scale-110 transition-all  ">Inicio</a>
+        <a routerLink="/products"
+          class="text-gray-800 text-lg hover:text-teal-600 cursor-pointer hover:scale-110 transition-all ">Productos</a>
+        <a routerLink="/offers"
+          class="text-gray-800 text-lg hover:text-teal-600 cursor-pointer hover:scale-110 transition-all">Ofertas</a>
+        <!-- <a routerLink="/about-us" class="text-gray-800 hover:text-teal-600 cursor-pointer">Sobre nosotros</a> -->
+        <a class="text-gray-800 text-lg hover:text-teal-600 cursor-pointer hover:scale-110 transition-all"></a>
+        <a routerLink="/management"
+          class="text-gray-800 text-lg hover:text-teal-600 cursor-pointer hover:scale-110 transition-all">Administrar
+          productos</a>
 
       </div>
-      <div class="flex items-center space-x-4">
-        <a (click)="openCartModal()" class="text-gray-800 hover:text-blue-600 cursor-pointer">
+
+      <div class="hidden sm:flex items-center space-x-4">
+        <a (click)="openCartModal()"
+          class="text-gray-800 hover:text-teal-600 cursor-pointer hover:scale-110 transition-all">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
         </a>
-        <a routerLink="/cuenta" class="text-gray-800 hover:text-blue-600 cursor-pointer">
+        <a routerLink="/cuenta" class="text-gray-800 hover:text-teal-600 cursor-pointer hover:scale-110 transition-all">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
           </svg>
         </a>
       </div>
+
     </div>
   </nav>
 </header>
@@ -46,6 +56,6 @@
       <span class="text-lg font-bold">Total: {{ getTotal() | currency }}</span>
       <button class="bg-green-600 text-white px-4 py-2 rounded">Pagar</button>
     </div>
-    <button (click)="closeCartModal()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded w-full">Cerrar</button>
+    <button (click)="closeCartModal()" class="mt-4 bg-teal-600 text-white px-4 py-2 rounded w-full">Cerrar</button>
   </div>
 </div>

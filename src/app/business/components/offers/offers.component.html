@@ -1,7 +1,6 @@
 <section class="bg-white">
   <div class="container mx-auto px-4 py-8">
     <h2 class="text-3xl font-bold text-gray-800 mb-6">Ofertas Especiales</h2>
-
     <!-- Filtros y Ordenación
     <div class="flex flex-wrap items-center justify-between mb-6">
       <div class="w-full md:w-auto mb-4 md:mb-0">
@@ -25,25 +24,28 @@
     </div> -->
 
     <!-- Lista de Ofertas -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      <!-- Oferta 1 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div *ngFor="let product of products;" class="bg-white rounded-lg shadow-md overflow-hidden">
         <div class="relative">
-          <img src="/placeholder.svg?height=200&width=300" alt="Oferta 1" class="w-full h-48 object-cover">
-          <div class="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 m-2 rounded-md font-semibold">
-            -30%
+          <img [src]="product.imageUrl" alt="{{ product.name }}" class="w-full h-48 object-cover">
+          <div *ngIf="product.oferta"
+            class="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 m-2 rounded-md font-semibold">
+            -{{ product.oferta }}%
           </div>
         </div>
         <div class="p-4">
-          <h3 class="text-lg font-semibold text-gray-800 mb-2">Smartphone XYZ</h3>
-          <p class="text-gray-600 mb-4">Último modelo con cámara de alta resolución y batería de larga duración.</p>
-          <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ product.name }}</h3>
+          <p class="text-gray-600 mb-4">{{ product.description }}</p>
+          <div class="flex items-center justify-between ">
             <div>
-              <span class="text-xl font-bold text-gray-800">$699.99</span>
-              <span class="text-sm text-gray-500 line-through ml-2">$999.99</span>
+              <span class="text-xl font-bold text-gray-800">{{ getDiscountedPrice(product) | currency : 'COP' }}</span>
+              <span *ngIf="product.oferta" class="text-sm text-gray-500 line-through ml-2">{{ product.price | currency :
+                'COP' }}</span>
             </div>
-            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
-              Comprar ahora
+            <button (click)="addToCart(product.id)"
+              class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 transition duration-300">
+              Añadir al carrito
             </button>
           </div>
         </div>
