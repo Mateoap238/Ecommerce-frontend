@@ -4,7 +4,37 @@
     Agregar Producto
   </button>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div *ngFor="let product of products;" class="bg-white shadow-md rounded-lg p-4">
+    <div *ngFor="let product of products;" class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative">
+        <img [src]=" 'http://localhost:3000' + product.image" alt="{{ product.name }}" class="w-full h-48 object-cover">
+        <div *ngIf="product.oferta"
+          class="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 m-2 rounded-md font-semibold">
+          -{{ product.oferta }}%
+        </div>
+      </div>
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ product.name }}</h3>
+        <p class="text-gray-600 mb-4">{{ product.description }}</p>
+        <div class="flex items-center justify-between">
+          <div>
+            <span *ngIf="product.oferta" class="text-sm text-gray-500 line-through ml-2">{{ product.price | currency :
+              'COP' }}</span>
+          </div>
+          <div class="flex gap-2">
+            <button (click)="deleteProduct(product.id)"
+              class="mt-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+              Eliminar
+            </button>
+            <button (click)="openEditModal(product)"
+              class="mt-2 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded">
+              Editar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div *ngFor="let product of products;" class="bg-white shadow-md rounded-lg p-4">
       <h2 class="text-xl font-semibold">{{ product.name }}</h2>
       <p class="text-gray-600">{{ product.description }}</p>
       <p class="text-lg font-bold mt-2">{{ product.price | currency : 'COP' }}</p>
@@ -18,7 +48,7 @@
           Editar
         </button>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <app-product-modal #productModal [isOpen]="isModalOpen()" (closeModal)="closeModal()" (addProduct)="addProduct($event)"

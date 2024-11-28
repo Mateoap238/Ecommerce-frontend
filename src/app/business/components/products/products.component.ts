@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../shared/interfaces/product';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../../shared/services/product.service';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 
 @Component({

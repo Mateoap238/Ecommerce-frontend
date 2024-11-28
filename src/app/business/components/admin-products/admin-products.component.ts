@@ -1,5 +1,5 @@
 import { Component, OnInit, signal, ViewChild } from '@angular/core';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../../shared/services/product.service';
 import { Product } from '../../../shared/interfaces/product';
 import { CommonModule } from '@angular/common';
 import { ProductModalComponent } from '../../../shared/components/product-modal/product-modal.component';

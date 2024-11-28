@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../interfaces/product';
-import { ProductService } from '../../../business/services/product.service';
+import { ProductService } from '../../../shared/services/product.service';
 
 @Component({
   selector: 'app-product-modal',
